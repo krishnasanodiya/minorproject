@@ -39,7 +39,8 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   cursor: none;
 }
 
@@ -240,6 +241,7 @@ body {
   justify-content: center;
   padding: 50px 40px;
   overflow-y: auto;
+  min-height: 100vh;
 }
 
 /* ── Auth Form ── */
@@ -556,9 +558,6 @@ body {
   animation: redirectAnim 1.8s ease forwards;
 }
 @keyframes redirectAnim { to { width: 100%; } }
-
-/* ── Hidden utility ── */
-.hidden { display: none !important; }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
