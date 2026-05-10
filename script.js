@@ -5,7 +5,33 @@
 
 'use strict';
 
-/* ── Helpers ── */
+/* ── Auth Guard — must be first ── */
+(function () {
+  if (!window.LifeOSAuth) return; // auth.js not loaded yet (shouldn't happen)
+  const session = window.LifeOSAuth.requireAuth(); // redirects to auth.html if not logged in
+  if (!session) return;
+
+  // Populate sidebar user info
+  const avatar = session.name ? session.name.charAt(0).toUpperCase() : '?';
+  const suAvatar = document.getElementById('suAvatar');
+  const suName   = document.getElementById('suName');
+  const suEmail  = document.getElementById('suEmail');
+  if (suAvatar) suAvatar.textContent = avatar;
+  if (suName)   suName.textContent   = session.name || session.username;
+  if (suEmail)  suEmail.textContent  = session.email || '';
+
+  // Logout button
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to log out of LifeOS?')) {
+        window.LifeOSAuth.logout();
+      }
+    });
+  }
+})();
+
+
 const $ = id => document.getElementById(id);
 const $$ = sel => document.querySelectorAll(sel);
 const $q = sel => document.querySelector(sel);

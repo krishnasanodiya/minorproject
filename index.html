@@ -59,9 +59,20 @@
       </a>
     </nav>
     <div class="sidebar-bottom">
+      <div class="sidebar-user" id="sidebarUser">
+        <div class="su-avatar" id="suAvatar">?</div>
+        <div class="su-info">
+          <div class="su-name" id="suName">—</div>
+          <div class="su-email" id="suEmail">—</div>
+        </div>
+      </div>
       <div class="theme-toggle" id="themeToggle">
         <span class="theme-icon">◑</span>
         <span>Theme</span>
+      </div>
+      <div class="logout-btn" id="logoutBtn">
+        <span class="logout-icon">⏻</span>
+        <span>Log Out</span>
       </div>
     </div>
   </aside>
@@ -427,6 +438,8 @@
 
   </main>
 
+  <!-- Auth must load first so guard runs before anything else -->
+  <script src="auth.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

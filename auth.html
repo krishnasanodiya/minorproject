@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeOS — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Background grid -->
+  <div class="bg-grid"></div>
+
+  <!-- Floating orbs -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <!-- ── MAIN WRAPPER ── -->
+  <div class="auth-wrapper">
+
+    <!-- Left Brand Panel -->
+    <div class="brand-panel">
+      <div class="brand-content">
+        <div class="brand-logo">
+          <span class="bl-l">Life</span><span class="bl-o">OS</span>
+        </div>
+        <p class="brand-tagline">Your Personal Intelligence Dashboard</p>
+        <div class="brand-features">
+          <div class="bf-item"><span class="bf-icon">✓</span> Task Manager with Priority Levels</div>
+          <div class="bf-item"><span class="bf-icon">◈</span> Daily Habit Tracker</div>
+          <div class="bf-item"><span class="bf-icon">◎</span> Focus / Pomodoro Timer</div>
+          <div class="bf-item"><span class="bf-icon">◻</span> Smart Notes with Mood Tags</div>
+          <div class="bf-item"><span class="bf-icon">▲</span> Productivity Analytics</div>
+        </div>
+        <div class="brand-quote">
+          "The secret of getting ahead is getting started."
+          <span>— Mark Twain</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Auth Panel -->
+    <div class="auth-panel">
+
+      <!-- ─── LOGIN FORM ─── -->
+      <div class="auth-form" id="loginForm">
+        <div class="form-header">
+          <h2 class="form-title">Welcome Back</h2>
+          <p class="form-sub">Sign in to your LifeOS workspace</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Username or Email</label>
+          <div class="input-wrap">
+            <span class="input-icon">◎</span>
+            <input type="text" id="loginIdentifier" class="auth-input" placeholder="Enter username or email" autocomplete="username" />
+          </div>
+          <span class="field-error" id="loginIdentifierErr"></span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">◈</span>
+            <input type="password" id="loginPassword" class="auth-input" placeholder="Enter your password" autocomplete="current-password" />
+            <button class="eye-btn" type="button" data-target="loginPassword">👁</button>
+          </div>
+          <span class="field-error" id="loginPasswordErr"></span>
+        </div>
+
+        <div class="form-row">
+          <label class="checkbox-wrap">
+            <input type="checkbox" id="rememberMe" />
+            <span class="checkbox-custom"></span>
+            Remember me
+          </label>
+          <button class="text-btn" id="forgotBtn">Forgot password?</button>
+        </div>
+
+        <div class="form-error" id="loginFormErr"></div>
+
+        <button class="submit-btn" id="loginBtn">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-loader" id="loginLoader"></span>
+        </button>
+
+        <div class="form-switch">
+          Don't have an account?
+          <button class="switch-btn" id="goToRegister">Create one →</button>
+        </div>
+      </div>
+
+      <!-- ─── REGISTER FORM ─── -->
+      <div class="auth-form hidden" id="registerForm">
+        <div class="form-header">
+          <h2 class="form-title">Create Account</h2>
+          <p class="form-sub">Start your productivity journey today</p>
+        </div>
+
+        <div class="fields-grid">
+          <div class="field-group">
+            <label class="field-label">Full Name</label>
+            <div class="input-wrap">
+              <span class="input-icon">◻</span>
+              <input type="text" id="regName" class="auth-input" placeholder="Your full name" autocomplete="name" />
+            </div>
+            <span class="field-error" id="regNameErr"></span>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Username</label>
+            <div class="input-wrap">
+              <span class="input-icon">◎</span>
+              <input type="text" id="regUsername" class="auth-input" placeholder="Choose a username" autocomplete="off" />
+            </div>
+            <span class="field-error" id="regUsernameErr"></span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Email Address</label>
+          <div class="input-wrap">
+            <span class="input-icon">@</span>
+            <input type="email" id="regEmail" class="auth-input" placeholder="your@email.com" autocomplete="email" />
+          </div>
+          <span class="field-error" id="regEmailErr"></span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">◈</span>
+            <input type="password" id="regPassword" class="auth-input" placeholder="Create a strong password" autocomplete="new-password" />
+            <button class="eye-btn" type="button" data-target="regPassword">👁</button>
+          </div>
+          <span class="field-error" id="regPasswordErr"></span>
+          <!-- Strength Meter -->
+          <div class="strength-wrap">
+            <div class="strength-bar">
+              <div class="strength-fill" id="strengthFill"></div>
+            </div>
+            <span class="strength-label" id="strengthLabel">—</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Confirm Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">◈</span>
+            <input type="password" id="regConfirm" class="auth-input" placeholder="Re-enter your password" autocomplete="new-password" />
+            <button class="eye-btn" type="button" data-target="regConfirm">👁</button>
+          </div>
+          <span class="field-error" id="regConfirmErr"></span>
+        </div>
+
+        <label class="checkbox-wrap terms-wrap">
+          <input type="checkbox" id="agreeTerms" />
+          <span class="checkbox-custom"></span>
+          I agree to the <button class="text-btn">Terms of Service</button> and <button class="text-btn">Privacy Policy</button>
+        </label>
+        <span class="field-error" id="regTermsErr"></span>
+
+        <div class="form-error" id="registerFormErr"></div>
+
+        <button class="submit-btn" id="registerBtn">
+          <span class="btn-text">Create Account</span>
+          <span class="btn-loader" id="registerLoader"></span>
+        </button>
+
+        <div class="form-switch">
+          Already have an account?
+          <button class="switch-btn" id="goToLogin">Sign in →</button>
+        </div>
+      </div>
+
+      <!-- ─── SUCCESS STATE ─── -->
+      <div class="auth-form hidden" id="successState">
+        <div class="success-icon">✓</div>
+        <h2 class="form-title">You're in!</h2>
+        <p class="form-sub">Redirecting to your dashboard...</p>
+        <div class="redirect-bar"><div class="redirect-fill"></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
